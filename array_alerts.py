@@ -10,6 +10,7 @@ LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 @ask.launch
 def new_game():
+    session.attributes['arrays'] = vmax.get_array_list()
     welcome_msg = render_template('welcome')
     return question(welcome_msg)
 
@@ -29,6 +30,18 @@ def list_arrays():
     session.attributes['arrays'] = arrays
     return question(arrays_msg)
 
+
+@ask.intent("SelectArrayIntent", convert={'id': int})
+def select_array(id):
+    array_list = session.attributes['arrays']
+    for array in array_list:
+        if array.endswith(str(id)):
+            session.attributes['array'] = array
+            msg = render_template('found_array', symm_id=array)
+            break
+    else:
+        msg = render_template('no_array', symm_id=str(id))
+    return question(msg)
 
 
 @ask.intent("ChooseArrayIntent", convert={'index': int})
