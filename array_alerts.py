@@ -70,6 +70,25 @@ def list_and_acknowledge_alerts():
 def new_session():
     LOG.info('new session started')
 
+@ask.intent("snap_resourcesIntent")
+def snap_resource_faq():
+    snap_resource_msg = render_template('snap_resources')
+    return question(snap_resource_msg)
+
+@ask.intent("snap_definedIntent")
+def snap_defined_faq():
+    snap_defined_faq_msg = render_template('defined_meaning')
+    return question(snap_defined_faq_msg)
+
+@ask.intent("snap_unmountIntent")
+def snap_unmount_faq():
+    snap_unmount_faq_msg = render_template('unmount_link')
+    return question(snap_unmount_faq_msg)
+
+@ask.intent("snap_rescanIntent")
+def snap_rescan_faq():
+    snap_rescan_faq_msg = render_template('rescan_volumes')
+    return question(snap_rescan_faq_msg)
 
 @ask.intent("GoodbyeIntent")
 def goodbye():
