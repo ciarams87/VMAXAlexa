@@ -76,6 +76,11 @@ def snap_resource_faq():
     snap_resource_msg = render_template('snap_resources')
     return question(snap_resource_msg)
 
+@ask.intent("snapdefinitionIntent")
+def snap_definition_faq():
+    snap_definition_msg = render_template('snapvx_definition')
+    return question(snap_definition_msg)
+
 @ask.intent("snapdefinedIntent")
 def snap_defined_faq():
     snap_defined_faq_msg = render_template('defined_meaning')

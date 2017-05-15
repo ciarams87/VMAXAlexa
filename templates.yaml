@@ -23,6 +23,12 @@ vmax_intro: VMAX All Flash is architected to support the densest flash configura
             higher performance, predictable latency, increased density, reduced power with the highest reliablility
             availablity and serviceability coupled with the best data services in the industry.
 
+snapvx_definition: SnapVX is the latest and greatest Local replication available on VMAX3 and VMAX ALL FLASH.  SnapVX is
+                   efficient as possible by creating a snapshot, a pointer based structure that preserves a
+                   Point-in-time view of a source volume. Snapshots do not require target volumes, share back-end allocations
+                   with the source volume and other snapshots of the source volume, and only consume additional space when
+                   the source volume is changed. A single source volume can have up to 256 snapshots.
+
 snap_resources: Simply creating a targetless snapshot does not consume any system resources.
                 The snapshot resource usage grows as the source device is updated. As new
                 writes come into the source device, the original backend data becomes snapshot
