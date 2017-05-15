@@ -94,5 +94,6 @@ def snap_rescan_faq():
 def goodbye():
     return statement(render_template('goodbye'))
 
+
 if __name__ == '__main__':
     app.run(debug=True)
