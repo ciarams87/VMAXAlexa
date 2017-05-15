@@ -1,5 +1,5 @@
-welcome: Welcome to VMAX managed by Alexa. I can manage and alert you on your VMAX.
-         I'm still getting up to speed but why not ask me about VMAX all FLASH or answer your questions on SnapVX features.
+welcome: Good morning Dave. Welcome to VMAX managed by Alexa. I can manage and alert you on your VMAX.
+         I'm still getting up to speed but why not ask me about VMAX all FLASH or SnapVX features.
 
 array: There are {{ amount }} VMAX arrays in your environment. These are {{ array_list }}.
        Select an array by stating its corresponding position in the list.
