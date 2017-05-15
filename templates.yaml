@@ -22,3 +22,38 @@ vmax_intro: VMAX All Flash is architected to support the densest flash configura
             flash alternatives. It allows VMAX All Flash to leverage the increases in flash drive
             densities, economies of scale, and faster time to market provided by the suppliers for industry standard
             flash drive technology.
+            
+snap_resources: Simply creating a targetless snapshot does not consume any system resources.
+                The snapshot resource usage grows as the source device is updated. As new
+                writes come into the source device, the original backend data becomes snapshot
+                deltas that preserve the point in time, which causes the backend usage to grow.
+                Cache and flash resources are also required to store and manage snapshot data
+                and metadata, such as source device, snapshot, timestamp, and so on. Snapshots
+                will begin to fail when these resources are exhausted.
+
+defined_meaning: When a target is linked, the defining process scans the entire target device. The
+                 defining scan changes the pointers of each track on the target to share the
+                 appropriate backend data for the point-in-time snapshot, which will typically be a
+                 combination of source tracks and snapshot changes.
+                 The defining process and shared allocations allow the target to access the
+                 backend data directly and without redirection. This capability allows SnapVX to
+                 offer unlimited levels of cascading, improved performance of accessing linked
+                 targets compared to traditional snapshots and nocopy clones, and access to pointin-time
+                 data by nocopy targets after they are unlinked.
+                 The defining scan is a lower priority, background operation that defers to higher
+                 priority operations. Therefore, the time for a defining process to complete depends
+                 on a number of factors, such as the size of the involved volumes, allocated portion
+                 of those volumes, and other activity across the array.
+
+unmount_link: Yes. The target will be toggled to the not ready state and then back to the ready
+              state during the link and relink operations and will become momentarily
+              unavailable. So the target should be unmounted before issuing either the link or
+              relink command and then remounted after the operation completes. This action
+              also ensures that the host operating system does not cache any file system data.
+              Generally speaking you should unmount any volumes before refreshing the data from the storage
+              array so that the host inode tables are refreshed too.
+
+rescan_volumes: There is no EMC TimeFinder requirement to rescan after a link or unlink operation.
+                Typically, the rescan requirement is dependent on the specific host operating
+                system or if devices were added to the set, for example, the Storage Group.
+
