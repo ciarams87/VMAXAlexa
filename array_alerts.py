@@ -17,7 +17,7 @@ def new_game():
 @ask.intent("VmaxIntroIntent")
 def vmax_intro():
     vmax_message = render_template('vmax_intro')
-    return statement(vmax_message)
+    return question(vmax_message)
 
 
 @ask.intent("YesIntent")
