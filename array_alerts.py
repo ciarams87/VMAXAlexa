@@ -51,6 +51,18 @@ def choose_array(index):
     return question(msg)
 
 
+@ask.intent("ListSGComplianceIntent")
+def list_sg_compliance():
+    array = session.attributes['array']
+    sg_compliance_list = vmax.get_all_sg_compliance(array)
+    if sg_compliance_list and len(sg_compliance_list) > 0:
+        msg = render_template('compliance_details', no_sg_count=sg_compliance_list['no_slo'],
+                              stable_sg_count=sg_compliance_list['slo_stable'],
+                              marginal_sg_count=sg_compliance_list['slo_marginal'],
+                              critical_sg_count=sg_compliance_list['slo_critical'])
+        return question(msg)
+
+
 @ask.intent("ListAlertsIntent")
 def list_and_acknowledge_alerts():
     return_alerts = []

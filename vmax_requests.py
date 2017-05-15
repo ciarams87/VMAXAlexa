@@ -78,6 +78,12 @@ def get_all_array_alerts(array, filters=None):
     return response['alertId']
 
 
+def get_all_sg_compliance(array, filters=None):
+    target_uri = "/84/sloprovisioning/symmetrix/%(array)s/" % {'array': array}
+    response, status_code = vmax_req.rest_request(target_uri, 'get', filters)
+    return response['sloCompliance']
+
+
 def get_alert(array, alert_id):
     """Queries for a particular alert.
 
