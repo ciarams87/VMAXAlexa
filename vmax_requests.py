@@ -3,7 +3,7 @@ from rest_requests import RestRequests
 
 LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
-server_ip = ''  # ip of the Unisphere server to query
+server_ip = '10.60.141.75'  # ip of the Unisphere server to query
 port = '8443'  # port to connect to the unisphere server on, e.g. 8443
 username, password = 'smc', 'smc'  # credentials for the Unisphere server
 
