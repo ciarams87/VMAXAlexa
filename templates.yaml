@@ -1,4 +1,5 @@
-welcome: Welcome to VMAX Alexa. I am going to list out the arrays in your environment. Ready?
+welcome: Welcome to VMAX managed by Alexa. I can manage and alert you on your VMAX.
+         I'm still getting up to speed but why not ask me about VMAX all FLASH or answer your questions on SnapVX features.
 
 array: There are {{ amount }} VMAX arrays in your environment. These are {{ array_list }}.
        Select an array by stating its corresponding position in the list.
@@ -17,12 +18,10 @@ alert_details: The details of the selected alerts are as follows {{ alert_list }
 
 goodbye: Goodbye and thank you.
 
-vmax_intro: VMAX All Flash is architected to support the densest flash configuration possible.
-            VMAX All Flash support for high capacity flash drives provides a differentiated capability versus many all
-            flash alternatives. It allows VMAX All Flash to leverage the increases in flash drive
-            densities, economies of scale, and faster time to market provided by the suppliers for industry standard
-            flash drive technology.
-            
+vmax_intro: VMAX All Flash is architected to support the densest flash configuration possible. VMAX ALL Flash provides
+            higher performance, predictable latency, increased density, reduced power with the higest reliablility
+            availablity and serviceability coupled with the best data services in the industry.
+
 snap_resources: Simply creating a targetless snapshot does not consume any system resources.
                 The snapshot resource usage grows as the source device is updated. As new
                 writes come into the source device, the original backend data becomes snapshot
@@ -56,4 +55,6 @@ unmount_link: Yes. The target will be toggled to the not ready state and then ba
 rescan_volumes: There is no EMC TimeFinder requirement to rescan after a link or unlink operation.
                 Typically, the rescan requirement is dependent on the specific host operating
                 system or if devices were added to the set, for example, the Storage Group.
+
+
 
