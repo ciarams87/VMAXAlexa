@@ -18,6 +18,7 @@ alert_details: The details of the selected alerts are as follows {{ alert_list }
 
 goodbye: Goodbye and thank you.
 
+
 vmax_intro: VMAX All Flash is architected to support the densest flash configuration possible. VMAX ALL Flash provides
             higher performance, predictable latency, increased density, reduced power with the highest reliablility
             availablity and serviceability coupled with the best data services in the industry.

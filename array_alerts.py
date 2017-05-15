@@ -30,6 +30,7 @@ def list_arrays():
     return question(arrays_msg)
 
 
+
 @ask.intent("ChooseArrayIntent", convert={'index': int})
 def choose_array(index):
     array_list = session.attributes['arrays']
