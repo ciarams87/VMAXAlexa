@@ -57,5 +57,3 @@ rescan_volumes: There is no EMC TimeFinder requirement to rescan after a link or
                 Typically, the rescan requirement is dependent on the specific host operating
                 system or if devices were added to the set, for example, the Storage Group.
 
-
-
