@@ -83,6 +83,25 @@ def list_sg_compliance():
         return question(msg)
 
 
+@ask.intent("ListProcessingJob")
+def list_processing_jobs():
+    array = session.attributes['array']
+    job_ids = session.attributes['job_ids']
+    jobs_processing_list = []
+
+    for job in job_ids:
+        jobs_processing_list.append(vmax.get_processing_job(array, job))
+
+    if jobs_processing_list and len(jobs_processing_list) > 0:
+        task_descriptions = []
+        for taskDesc in jobs_processing_list:
+            task_descriptions.append(taskDesc['description'])
+
+    msg = render_template('processing_jobs_details',jobs_processing_count=len(jobs_processing_list),
+                          processing_jobs_list=task_descriptions)
+    return question(msg)
+
+
 @ask.intent("ListAlertsIntent")
 def list_and_acknowledge_alerts():
     return_alerts = []

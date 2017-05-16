@@ -81,3 +81,5 @@ total_usable_capacity: There are {{ total_usable_cap_val }} gigabytes available.
 
 
 no_array: VMAX array {{ symm_id }} not found
+
+processing_jobs_details: There are {{ jobs_processing_count }}. They are {{ processing_jobs_list }}
