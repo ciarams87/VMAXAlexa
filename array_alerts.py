@@ -175,7 +175,8 @@ def snap_unmount_faq():
 def snap_rescan_faq():
     snap_rescan_faq_msg = render_template('rescan_volumes')
     return question(snap_rescan_faq_msg)
-#new vmax_device_limits vmax_950 ndm_definition
+
+#TODO create intents and iterations for already in yaml alerts_commands provisioning_commands performance_commands faq_questions
 
 @ask.intent("vmaxlimits")
 def vmax_limits_faq():
