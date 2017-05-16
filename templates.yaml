@@ -22,13 +22,11 @@ array: There are {{ amount }} VMAX arrays in your environment. These are {{ arra
 indexerror: Sorry, that index was not recognised. Would you like to try again?
 
 alerts: There are {{ array_alert_num }} total unacknowledged alerts, including {{ server_unacknowledged }}
-        server alerts, for the given VMAX. If you would like the details of these alerts, say alerts.
-        If not, say no or goodbye. What is your choice?
+        server alerts, for the given VMAX. If you would like the details of these alerts, say "get alert details".
 
-no_alerts: There are no alerts for your chosen array. Would you like to choose another array?
+no_alerts: There are no alerts for your chosen array.
 
 alert_details: The details of the selected alerts are as follows {{ alert_list }}.
-               Would you like to choose another array?
 
 goodbye: Goodbye and thank you.
 

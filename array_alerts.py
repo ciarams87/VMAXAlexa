@@ -108,7 +108,7 @@ def list_processing_jobs():
     return question(msg)
 
 
-@ask.intent("ListAlertsIntent")
+@ask.intent("GetAlertDetailsIntent")
 def list_and_acknowledge_alerts():
     return_alerts = []
     array = session.attributes['array']
