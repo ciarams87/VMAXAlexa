@@ -1,9 +1,10 @@
 import logging
 from rest_requests import RestRequests
+import time
 
 LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
-server_ip = '10.60.141.75'  # ip of the Unisphere server to query
+server_ip = '10.60.136.184'  # ip of the Unisphere server to query
 port = '8443'  # port to connect to the unisphere server on, e.g. 8443
 username, password = 'smc', 'smc'  # credentials for the Unisphere server
 
@@ -34,7 +35,7 @@ def get_array_list():
 
     :return: array list
     """
-    target_uri = "/84/system/symmetrix"
+    target_uri = "/84/wlp/symmetrix"
     response, status_code = vmax_req.rest_request(target_uri, GET)
     check_status_code_success(status_code, response)
     try:
@@ -145,3 +146,176 @@ def get_symm_capacity(array, filters=None):
     return response['total_usable_cap_gb']
 
 
+
+
+def add_new_volume_to_sg(
+        array, volume_name, storagegroup_name, volume_size):
+    """Create a new volume in the given storage group.
+
+    :param array: the array serial number
+    :param volume_name: the volume name (String)
+    :param storagegroup_name: the storage group name
+    :param volume_size: volume size (String)
+    :returns: dict -- volume_dict - the volume dict
+    """
+    payload = (
+        {"executionOption": "ASYNCHRONOUS",
+         "editStorageGroupActionParam": {
+             "expandStorageGroupParam": {
+                 "addVolumeParam": {
+                     "num_of_vols": 1,
+                     "emulation": "FBA",
+                     "volumeIdentifier": {
+                         "identifier_name": volume_name,
+                         "volumeIdentifierChoice": "identifier_name"},
+                     "volumeAttribute": {
+                         "volume_size": volume_size,
+                         "capacityUnit": "GB"}}}}})
+    job = modify_storage_group(array, storagegroup_name, payload)
+    try:
+        job_id = job['jobId']
+    except (KeyError, ValueError):
+        job_id = None
+
+    return job_id
+
+
+def modify_storage_group(array, storagegroup_name, payload):
+    """
+    
+    :param array: 
+    :param storagegroup_name: 
+    :param payload: 
+    :return: 
+    """
+    url = ("/84/sloprovisioning/symmetrix/%(array)s/storagegroup/%(sg_name)s"
+           % {'array': array, 'sg_name': storagegroup_name})
+    status_code, job = vmax_req.rest_request(url, PUT,
+                                             request_object=payload)
+    check_status_code_success(status_code, job)
+    return job
+
+def get_host_list(array):
+    """
+    
+    :param array: 
+    :return: 
+    """
+    host_list = None
+    url = "/84/sloprovisioning/symmetrix/%(array)s/host" % {'array': array}
+    status_code, host = vmax_req.rest_request(url, GET)
+    if not status_code == 404:
+        try:
+            host_list = host['hostId']
+        except KeyError:
+            pass
+    return host_list
+
+
+def get_storage_group(array, storagegroup_name):
+    """
+    
+    :param array: 
+    :param storagegroup_name: 
+    :return: 
+    """
+    url = ("/84/sloprovisioning/symmetrix/%(array)s/storagegroup/%(sg_name)s"
+           % {'array': array, 'sg_name': storagegroup_name})
+    status_code, sg_details = vmax_req.rest_request(url, GET)
+    if status_code == 404:
+        return None
+    return sg_details
+
+
+def get_host_masking_view(array, host):
+    """
+    
+    :param array: 
+    :param host: 
+    :return: 
+    """
+    mv_name = None
+    sg_name = None
+    url = ("/84/sloprovisioning/symmetrix/%(array)s/host/%(host)s"
+           % {'array': array, 'host': host})
+    status_code, host_details = vmax_req.rest_request(url, GET)
+    check_status_code_success(status_code, host_details)
+    try:
+        mv_list = host_details['maskingview']
+        if mv_list:
+            mv_name = mv_list[0]
+            sg_name = get_storage_group_from_masking_view(array, mv_name)
+    except (KeyError, IndexError):
+        mv_name = "%(host)s_alexa_MV" % {'host': host}
+        sg_name = create_masking_view(array, mv_name, host)
+    return mv_name, sg_name
+
+def get_storage_group_from_masking_view(array, mv_name):
+    sg_name = None
+    url = ("/84/sloprovisioning/symmetrix/%(array)s/maskingview/%(mv_name)s"
+           % {'array': array, 'mv_name': mv_name})
+    status_code, mv_details = vmax_req.rest_request(url, GET)
+    try:
+        sg_name = mv_details['storageGroupId']
+    except KeyError:
+        pass
+    return sg_name
+
+
+def create_masking_view(array, mv_name, host):
+    """
+    
+    :param array: 
+    :param mv_name: 
+    :param host: 
+    :return: 
+    """
+    sg_name = "%(mv_name)s_SG" % {'mv_name': mv_name}
+    sg_details = get_storage_group(array, sg_name)
+    if sg_details is None:
+        create_storage_group(array, sg_name)
+    pg_name = "alexa_pg"
+    payload = {
+        "portGroupSelection": {
+        "useExistingPortGroupParam": {"portGroupId": pg_name}},
+        "maskingViewId": mv_name,
+        "hostOrHostGroupSelection": {"useExistingHostParam": {
+            "hostId": host}},
+        "storageGroupSelection": {"useExistingStorageGroupParam": {
+            "storageGroupId": sg_name}}}
+    url = ("/84/sloprovisioning/symmetrix/%(array)s/maskingview"
+           % {'array': array})
+    status_code, job = vmax_req.rest_request(url, POST, request_object=payload)
+    check_status_code_success(status_code, job)
+    return sg_name
+
+def create_storage_group(array, sg_name):
+    """
+    
+    :param array: 
+    :param sg_name: 
+    :return: 
+    """
+    url = ("/84/sloprovisioning/symmetrix/%(array)s/storagegroup"
+           % {'array': array})
+    payload = {"srpId": "SRP_1",
+               "storageGroupId": sg_name,
+               "emulation": "FBA",
+               "create_empty_storage_group": "true"}
+    status_code, job = vmax_req.rest_request(
+        url, POST, request_object=payload)
+    check_status_code_success(status_code, job)
+
+def provision_storage_to_host(array, host, size):
+    """
+    
+    :param array: 
+    :param host: 
+    :param size: 
+    :return: 
+    """
+    volume_name = "alexa_vol_%(time)s" % {'time': str(time.time())}
+    mv_name, sg_name = get_host_masking_view(array, host)
+    job_id = add_new_volume_to_sg(
+        array, volume_name, sg_name, str(size))
+    return job_id

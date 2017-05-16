@@ -28,13 +28,15 @@ def vmax_intro():
     return question(vmax_message)
 
 
-@ask.intent("YesIntent")
+@ask.intent("ListArraysIntent")
 def list_arrays():
     arrays = vmax.get_array_list()
     len_array_list = len(arrays)
     arrays_msg = render_template('array', amount=len_array_list,
                                  array_list=list(enumerate(arrays)))
     session.attributes['arrays'] = arrays
+    if len_array_list == 1:
+        session.attributes['array'] = arrays[0]
     return question(arrays_msg)
 
 
@@ -51,23 +53,24 @@ def select_array(id):
     return question(msg)
 
 
-@ask.intent("ChooseArrayIntent", convert={'index': int})
-def choose_array(index):
-    array_list = session.attributes['arrays']
-    try:
-        array = array_list[index]
-    except IndexError:
-        msg = render_template('indexerror')
+@ask.intent("ListAlertsIntent", convert={'id': int})
+def array_alerts(id=None):
+    array_id = None
+    if id:
+        array_list = session.attributes['arrays']
+        for array in array_list:
+            if array.endswith(str(id)):
+                array_id = array
     else:
-        session.attributes['array'] = array
-        (perf_unacknowledged, array_unacknowledged,
-         server_unacknowledged) = vmax.get_alert_summary(array)
-        total_unacknowledged = perf_unacknowledged + array_unacknowledged + server_unacknowledged
-        if total_unacknowledged:
-            msg = render_template('alerts', array_alert_num=total_unacknowledged,
-                                  server_unacknowledged=server_unacknowledged)
-        else:
-            msg = render_template('no_alerts')
+        array_id = session.attributes['array']
+    (perf_unacknowledged, array_unacknowledged,
+     server_unacknowledged) = vmax.get_alert_summary(array_id)
+    total_unacknowledged = perf_unacknowledged + array_unacknowledged + server_unacknowledged
+    if total_unacknowledged:
+        msg = render_template('alerts', array_alert_num=total_unacknowledged,
+                              server_unacknowledged=server_unacknowledged)
+    else:
+        msg = render_template('no_alerts')
     return question(msg)
 
 
@@ -118,9 +121,32 @@ def list_and_acknowledge_alerts():
     return question(msg)
 
 
+@ask.intent("ProvisionStorageIntent")
+def return_host_list():
+    array = session.attributes['array']
+    host_list = vmax.get_host_list(array)
+    if host_list and len(host_list) > 0:
+        msg = render_template(
+            'host_list', host_count=len(host_list),
+            host_list=list(enumerate(host_list)))
+    else:
+        msg = render_template('no_hosts')
+    return question(msg)
+
+
+@ask.intent("ChooseHostIntent", convert={'size': int})
+def provision_to_host(host, size):
+    array = session.attributes['array']
+    job_id = vmax.provision_storage_to_host(array, host, size)
+    session.attributes['job_ids'].append(job_id)
+    msg = render_template('provision_storage', host=host, size=size)
+    return question(msg)
+
+
 @ask.on_session_started
 def new_session():
     LOG.info('new session started')
+
 
 @ask.intent("snapresourcesIntent")
 def snap_resource_faq():

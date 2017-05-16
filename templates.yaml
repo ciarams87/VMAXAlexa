@@ -2,8 +2,7 @@ welcome: Welcome to VMAX managed by Alexa. I can manage and alert you on your VM
          I'm still getting up to speed but why not ask me about VMAX 950.
 
 array: There are {{ amount }} VMAX arrays in your environment. These are {{ array_list }}.
-       Select an array by stating its corresponding position in the list.
-       Which array would you like to query?
+       Select an array by stating the last four digits of its serial number.
 
 indexerror: Sorry, that index was not recognised. Would you like to try again?
 
@@ -83,3 +82,11 @@ total_usable_capacity: There are {{ total_usable_cap_val }} gigabytes available.
 no_array: VMAX array {{ symm_id }} not found
 
 processing_jobs_details: There are {{ jobs_processing_count }}. They are {{ processing_jobs_list }}
+
+host_list: There are {{ host_count }} hosts in your environment. These are {{ host_list }}.
+           Which host would you like to provision storage to? Please state the name of the host and the capacity required.
+
+no_hosts: There are no hosts configured in your environment
+
+provision_storage: Provisioning a {{ size }} gigabyte volume to {{ host }}.
+                   If you would like to query the status of the job, say "get job status".
