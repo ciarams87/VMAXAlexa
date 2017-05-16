@@ -1,5 +1,20 @@
-welcome: Welcome to VMAX managed by Alexa. I can manage and alert you on your VMAX.
-         I'm still getting up to speed but why not ask me about VMAX 950.
+welcome: Welcome to VMAX managed by Alexa. Ask about Alerts, Provisioning, Performance.
+
+alerts_commands: Possible Questions are.
+                 List active alerts.
+                 Acknolodge Alert Alert ID.
+                 
+
+provisioning_commands: Possible Questions are.
+                       Provision X GB of strorage to Host hostname.
+
+performance_commands: Possible Questions are.
+                      Give me an overview of storage group compliance.
+
+faq_questions: You can ask for help on the following topics.
+               SnapVX.
+               VMAX Nine Fifty.
+               NDM, Non Disruptive Migration.
 
 array: There are {{ amount }} VMAX arrays in your environment. These are {{ array_list }}.
        Select an array by stating its corresponding position in the list.
@@ -26,10 +41,10 @@ vmax_intro: VMAX All Flash is architected to support the densest flash configura
 vmax_device_limits: VMAX All FLash and VMAX3 support devices of up to 64TB in size.  VMAX ALL FLASH volumes can be
                     dynamically expanded, and do not use meta devices.  VMAX ALL FLASH supports up to 64K volumes.
 
-vmax_950: VMAX 950F resets the benchmark for enterprise storage performance giving results up to 5 times faster than the competition in the real world
+vmax_950: VMAX Nine Fifty resets the benchmark for enterprise storage performance giving results up to 5 times faster than the competition in the real world
           Compared to the previous generation. 30 percent better response times, 350 microseconds for OLTP workloads. 68 percent faster, up to 6.7M IOPS.
           25 percent smaller footprint tachieve the same performance and capacity. UNPARELLED PROTECTION and SECURITY.
-          VMAX 950F supports all the data services you expect from VMAX giving you the protection your enterprise requires.
+          VMAX Nine Fifty supports all the data services you expect from VMAX giving you the protection your enterprise requires.
 
 ndm_definition: Non Disruptive Migration is a unique feature of VMAX ALL FLASH and VMAX3 arrays that enables customers to migrate
                 existing applications to the latest VMAX arrays while continiously protecting their environments with remote and local replication.
