@@ -84,6 +84,12 @@ def get_all_sg_compliance(array, filters=None):
     return response['sloCompliance']
 
 
+def get_processing_job(array, jobId, filters=None):
+    target_uri = "/84/system/symmetrix/%(array)s/job/%(jobId)s" % {'array': array, 'jobId': jobId}
+    response, status_code = vmax_req.rest_request(target_uri, 'get', filters)
+    return response['task']
+
+
 def get_alert(array, alert_id):
     """Queries for a particular alert.
 
@@ -130,3 +136,12 @@ def delete_alert(array, alert_id):
     target_uri = ("/84/system/symmetrix/%s/alert/%s" %
                   (array, alert_id))
     return vmax_req.rest_request(target_uri, DELETE)
+
+
+def get_symm_capacity(array, filters=None):
+    target_uri = "/84/sloprovisioning/symmetrix/%(array)s/" \
+                 % {'array': array}
+    response, status_code = vmax_req.rest_request(target_uri, 'get', filters)
+    return response['total_usable_cap_gb']
+
+

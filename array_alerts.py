@@ -7,12 +7,19 @@ app = Flask(__name__)
 ask = Ask(app, "/")
 LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
-
 @ask.launch
 def new_game():
     session.attributes['arrays'] = vmax.get_array_list()
     welcome_msg = render_template('welcome')
     return question(welcome_msg)
+
+
+@ask.intent("SymmCapacityIntent")
+def get_symm_capcity():
+    array = session.attributes['array']
+    total_usable_cap_gb = vmax.get_symm_capacity(array)
+    msg = render_template('total_usable_capacity', total_usable_cap_val = total_usable_cap_gb)
+    return question(msg)
 
 
 @ask.intent("VmaxIntroIntent")
@@ -74,6 +81,25 @@ def list_sg_compliance():
                               marginal_sg_count=sg_compliance_list['slo_marginal'],
                               critical_sg_count=sg_compliance_list['slo_critical'])
         return question(msg)
+
+
+@ask.intent("ListProcessingJob")
+def list_processing_jobs():
+    array = session.attributes['array']
+    job_ids = session.attributes['job_ids']
+    jobs_processing_list = []
+
+    for job in job_ids:
+        jobs_processing_list.append(vmax.get_processing_job(array, job))
+
+    if jobs_processing_list and len(jobs_processing_list) > 0:
+        task_descriptions = []
+        for taskDesc in jobs_processing_list:
+            task_descriptions.append(taskDesc['description'])
+
+    msg = render_template('processing_jobs_details',jobs_processing_count=len(jobs_processing_list),
+                          processing_jobs_list=task_descriptions)
+    return question(msg)
 
 
 @ask.intent("ListAlertsIntent")
