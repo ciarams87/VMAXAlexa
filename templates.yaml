@@ -26,14 +26,14 @@ vmax_intro: VMAX All Flash is architected to support the densest flash configura
 vmax_device_limits: VMAX All FLash and VMAX3 support devices of up to 64TB in size.  VMAX ALL FLASH volumes can be
                     dynamically expanded, and do not use meta devices.  VMAX ALL FLASH supports up to 64K volumes.
 
-vmax_950: VMAX 950F resets the benchmark for enterprise storage performance giving results up to 5x faster than the competition in the real world
-          Compared to the previous generation. 30% better response times, 350 microseconds for OLTP workloads. 68% faster, up to 6.7M IOPS.
-          25% smaller footprint tachieve the same performance and capacity. UNPARELLED PROTECTION and SECURITY.
+vmax_950: VMAX 950F resets the benchmark for enterprise storage performance giving results up to 5 times faster than the competition in the real world
+          Compared to the previous generation. 30 percent better response times, 350 microseconds for OLTP workloads. 68 percent faster, up to 6.7M IOPS.
+          25 percent smaller footprint tachieve the same performance and capacity. UNPARELLED PROTECTION and SECURITY.
           VMAX 950F also comes with support for
-          RecoverPoint – VMAX customers can now utilize RecoverPoint treplicate to/from heterogeneous Dell EMC storage arrays for flexible disaster recovery.
-          Secure snaps – prevent accidental or malicious deletion of SnapVX snapshots to protect against both internal and external threats.
-          Data-at-rest encryption (D@RE) external key manager – integration with external key managers enables customers tleverage a centralized key management platform for all cryptographic keys
-          and applications including D@RE.
+          RecoverPoint  VMAX customers can now utilize RecoverPoint treplicate to/from heterogeneous Dell EMC storage arrays for flexible disaster recovery.
+          Secure snaps  prevent accidental or malicious deletion of SnapVX snapshots to protect against both internal and external threats.
+          Data-at-rest encryption  external key manager – integration with external key managers enables customers tleverage a centralized key management platform for all cryptographic keys
+          and applications including DARE.
           VMAX 950F supports all the data services you expect from VMAX giving you the protection your enterprise requires.
 
 ndm_definition: Non Disruptive Migration is a unique feature of VMAX ALL FLASH and VMAX3 arrays that enables customers to migrate
