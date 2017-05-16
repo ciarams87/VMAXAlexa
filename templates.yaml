@@ -2,7 +2,7 @@ welcome: Welcome to VMAX managed by Alexa. Ask about Alerts, Provisioning, Perfo
 
 alerts_commands: Possible Questions are.
                  List active alerts.
-                 Acknolodge Alert Alert ID.
+                 Acknolodge Alert Alert ID
                  
 
 provisioning_commands: Possible Questions are.
