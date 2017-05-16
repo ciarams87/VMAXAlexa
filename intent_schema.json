@@ -25,6 +25,9 @@
       "intent": "ListAlertsIntent"
     },
     {
+      "intent": "DestroyArray"
+    },
+    {
       "intent": "GoodbyeIntent"
     }
   ]
