@@ -9,7 +9,10 @@ LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 @ask.launch
 def new_game():
-    session.attributes['arrays'] = vmax.get_array_list()
+    arrays = vmax.get_array_list()
+    session.attributes['arrays'] = arrays
+    if len(arrays) == 1:
+        session.attributes['array'] = arrays[0]
     welcome_msg = render_template('welcome')
     return question(welcome_msg)
 
