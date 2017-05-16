@@ -17,7 +17,7 @@
   "slots": [
         {
           "name": "id",
-          "type": "AMAZON.FOUR_DIGIT_NUMBER"
+          "type": "AMAZON.NUMBER"
         }
       ]
     },

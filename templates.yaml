@@ -103,3 +103,6 @@ no_hosts: There are no hosts configured in your environment
 
 provision_storage: Provisioning a {{ size }} gigabyte volume to {{ host }}.
                    If you would like to query the status of the job, say "get job status".
+
+destroy_array: Initiating self-destruct sequence, A-K-A the mother of all D-U D-L events, in five, four,
+               three, two, one. Just kidding. You can't do that with VMAX.

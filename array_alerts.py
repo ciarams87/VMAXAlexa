@@ -206,7 +206,7 @@ def goodbye():
 
 @ask.intent("DestroyArray")
 def destroy_array():
-    return statement(render_template('destroy_array'))
+    return question(render_template('destroy_array'))
 
 if __name__ == '__main__':
     app.run(debug=True)
