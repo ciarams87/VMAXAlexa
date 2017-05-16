@@ -12,6 +12,15 @@
         }
       ]
     },
+  {
+  "intent": "SelectArrayIntent",
+  "slots": [
+        {
+          "name": "id",
+          "type": "AMAZON.FOUR_DIGIT_NUMBER"
+        }
+      ]
+    },
     {
       "intent": "ListAlertsIntent"
     },

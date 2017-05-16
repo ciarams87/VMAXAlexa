@@ -10,6 +10,7 @@ LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 @ask.launch
 def new_game():
+    session.attributes['arrays'] = vmax.get_array_list()
     welcome_msg = render_template('welcome')
     return question(welcome_msg)
 
@@ -30,6 +31,18 @@ def list_arrays():
     return question(arrays_msg)
 
 
+@ask.intent("SelectArrayIntent", convert={'id': int})
+def select_array(id):
+    array_list = session.attributes['arrays']
+    for array in array_list:
+        if array.endswith(str(id)):
+            session.attributes['array'] = array
+            msg = render_template('found_array', symm_id=array)
+            break
+    else:
+        msg = render_template('no_array', symm_id=str(id))
+    return question(msg)
+
 
 @ask.intent("ChooseArrayIntent", convert={'index': int})
 def choose_array(index):
@@ -49,6 +62,18 @@ def choose_array(index):
         else:
             msg = render_template('no_alerts')
     return question(msg)
+
+
+@ask.intent("ListSGComplianceIntent")
+def list_sg_compliance():
+    array = session.attributes['array']
+    sg_compliance_list = vmax.get_all_sg_compliance(array)
+    if sg_compliance_list and len(sg_compliance_list) > 0:
+        msg = render_template('compliance_details', no_sg_count=sg_compliance_list['no_slo'],
+                              stable_sg_count=sg_compliance_list['slo_stable'],
+                              marginal_sg_count=sg_compliance_list['slo_marginal'],
+                              critical_sg_count=sg_compliance_list['slo_critical'])
+        return question(msg)
 
 
 @ask.intent("ListAlertsIntent")

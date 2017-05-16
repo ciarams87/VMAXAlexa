@@ -3,7 +3,7 @@ from rest_requests import RestRequests
 
 LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
-server_ip = ''  # ip of the Unisphere server to query
+server_ip = '10.60.141.75'  # ip of the Unisphere server to query
 port = '8443'  # port to connect to the unisphere server on, e.g. 8443
 username, password = 'smc', 'smc'  # credentials for the Unisphere server
 
@@ -76,6 +76,12 @@ def get_all_array_alerts(array, filters=None):
     response, status_code = vmax_req.rest_request(target_uri, GET, filters)
     check_status_code_success(status_code, response)
     return response['alertId']
+
+
+def get_all_sg_compliance(array, filters=None):
+    target_uri = "/84/sloprovisioning/symmetrix/%(array)s/" % {'array': array}
+    response, status_code = vmax_req.rest_request(target_uri, 'get', filters)
+    return response['sloCompliance']
 
 
 def get_alert(array, alert_id):
