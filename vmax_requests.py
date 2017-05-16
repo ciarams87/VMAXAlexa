@@ -130,3 +130,12 @@ def delete_alert(array, alert_id):
     target_uri = ("/84/system/symmetrix/%s/alert/%s" %
                   (array, alert_id))
     return vmax_req.rest_request(target_uri, DELETE)
+
+
+def get_symm_capacity(array, filters=None):
+    target_uri = "/84/sloprovisioning/symmetrix/%(array)s/" \
+                 % {'array': array}
+    response, status_code = vmax_req.rest_request(target_uri, 'get', filters)
+    return response['total_usable_cap_gb']
+
+
