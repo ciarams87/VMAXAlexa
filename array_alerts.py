@@ -127,7 +127,7 @@ def vmax_limits_faq():
     vmax_limits_msg = render_template('vmax_device_limits')
     return question(vmax_limits_msg)
 
-@ask.intent("vmax950")
+@ask.intent("vmaxninefifty")
 def vmax_950_faq()
     vmax_950_msg = render_template('vmax_950')
     return question(vmax_950_msg)
