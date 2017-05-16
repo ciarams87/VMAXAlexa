@@ -95,6 +95,22 @@ def snap_unmount_faq():
 def snap_rescan_faq():
     snap_rescan_faq_msg = render_template('rescan_volumes')
     return question(snap_rescan_faq_msg)
+#new vmax_device_limits vmax_950 ndm_definition
+
+@ask.intent("vmaxlimits")
+def vmax_limits_faq():
+    vmax_limits_msg = render_template('vmax_device_limits')
+    return question(vmax_limits_msg)
+
+@ask.intent("vmax950")
+def vmax_950_faq()
+    vmax_950_msg = render_template('vmax_950')
+    return question(vmax_950_msg)
+
+@ask.intent("ndmdefinition")
+def ndm_definition_faq():
+    ndm_definition_msg = render_template('ndm_definition')
+    return question(ndm_definition_msg)
 
 @ask.intent("GoodbyeIntent")
 def goodbye():

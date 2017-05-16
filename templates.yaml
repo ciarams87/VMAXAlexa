@@ -23,19 +23,34 @@ vmax_intro: VMAX All Flash is architected to support the densest flash configura
             higher performance, predictable latency, increased density, reduced power with the highest reliablility
             availablity and serviceability coupled with the best data services in the industry.
 
+vmax_device_limits: VMAX All FLash and VMAX3 support devices of up to 64TB in size.  VMAX ALL FLASH volumes can be
+                    dynamically expanded, and do not use meta devices.  VMAX ALL FLASH supports up to 64K volumes.
+
+vmax_950: VMAX 950F resets the benchmark for enterprise storage performance giving results up to 5x faster than the competition in the real world
+          Compared to the previous generation. 30% better response times, 350 microseconds for OLTP workloads. 68% faster, up to 6.7M IOPS.
+          25% smaller footprint tachieve the same performance and capacity. UNPARELLED PROTECTION and SECURITY.
+          VMAX 950F also comes with support for
+          RecoverPoint – VMAX customers can now utilize RecoverPoint treplicate to/from heterogeneous Dell EMC storage arrays for flexible disaster recovery.
+          Secure snaps – prevent accidental or malicious deletion of SnapVX snapshots to protect against both internal and external threats.
+          Data-at-rest encryption (D@RE) external key manager – integration with external key managers enables customers tleverage a centralized key management platform for all cryptographic keys
+          and applications including D@RE.
+          VMAX 950F supports all the data services you expect from VMAX giving you the protection your enterprise requires.
+
+ndm_definition: Non Disruptive Migration is a unique feature of VMAX ALL FLASH and VMAX3 arrays that enables customers to migrate
+                existing applications to the latest VMAX arrays while continiously protecting their environments with remote and local replication.
+                Non Disruptive Migration NDM is truely seamless to the host environments requiring no downtime of the storage or the application making
+                in VMAX to VMAX All Flash migrations a uniquely seamless activity.
+
 snapvx_definition: SnapVX is the latest and greatest Local replication available on VMAX3 and VMAX ALL FLASH.  SnapVX is
-                   efficient as possible by creating a snapshot, a pointer based structure that preserves a
-                   Point-in-time view of a source volume. Snapshots do not require target volumes, share back-end allocations
-                   with the source volume and other snapshots of the source volume, and only consume additional space when
+                   as efficient as possible by creating a snapshot, a pointer based structure that preserves a
+                   Point-in-time view of a source volume. Snapshots do not require target volumes. They share back-end allocations
+                   with the source volume and other snapshots of the source volume.  And only consume additional space when
                    the source volume is changed. A single source volume can have up to 256 snapshots.
 
 snap_resources: Simply creating a targetless snapshot does not consume any system resources.
-                The snapshot resource usage grows as the source device is updated. As new
-                writes come into the source device, the original backend data becomes snapshot
-                deltas that preserve the point in time, which causes the backend usage to grow.
+                The snapshot storage usage grows as the source device is updated as we are preserving the original data.
                 Cache and flash resources are also required to store and manage snapshot data
-                and metadata, such as source device, snapshot, timestamp, and so on. Snapshots
-                will begin to fail when these resources are exhausted.
+                and metadata, such as source device, snapshot, timestamp, and so on.
 
 defined_meaning: When a target is linked, the defining process scans the entire target device. The
                  defining scan changes the pointers of each track on the target to share the
@@ -46,10 +61,7 @@ defined_meaning: When a target is linked, the defining process scans the entire 
                  offer unlimited levels of cascading, improved performance of accessing linked
                  targets compared to traditional snapshots and nocopy clones, and access to pointin-time
                  data by nocopy targets after they are unlinked.
-                 The defining scan is a lower priority, background operation that defers to higher
-                 priority operations. Therefore, the time for a defining process to complete depends
-                 on a number of factors, such as the size of the involved volumes, allocated portion
-                 of those volumes, and other activity across the array.
+
 
 unmount_link: Yes. The target will be toggled to the not ready state and then back to the ready
               state during the link and relink operations and will become momentarily
