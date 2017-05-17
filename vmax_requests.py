@@ -341,3 +341,30 @@ def provision_storage_to_host(array, host, size):
         job_id = add_new_volume_to_sg(
             array, volume_name, sg_name, str(size))
     return job_id
+
+def get_array_metrics(array_id):
+    """Get array metrics.
+    Get all avaliable performance statistics for specified time 
+    period return in JSON
+    :param start_date: EPOCH Time
+    :param end_date: Epoch Time
+    :return: array_results_combined
+    """
+    start_date= 1495023300000
+    end_date=1495023300000
+    target_uri = "/performance/Array/metrics"
+    array_perf_payload = {
+        'symmetrixId': array_id,
+        'endDate': end_date,
+        'dataFormat': 'Average',
+        'metrics': [
+            'HostIOs', 'HostMBs', 'PercentCacheWP',
+            'ReadResponseTime', 'InfoAlertCount', 'WarningAlertCount', 'CriticalAlertCount',
+            'FE_Balance',
+            'DA_Balance'
+        ],
+        'startDate': start_date
+    }
+    array_perf_data = vmax_req.rest_request(
+        target_uri, POST, request_object=array_perf_payload)
+    return array_perf_data[0]['resultList']['result'][0]
