@@ -38,9 +38,7 @@ vmax_device_limits: VMAX All FLash and VMAX3 support devices of up to 64TB in si
                     dynamically expanded, and do not use meta devices.  VMAX ALL FLASH supports up to 64K volumes.
 
 vmax_950: VMAX Nine Fifty is the latest addition to the VMAX family.  Mazzel tov. Vmax nine fifty uses the latest intel
-          processors and provides up 5 times more performance than the competition in the real world Compared to the
-          previous generation. 30 percent better response times, 350 microseconds for OLTP workloads. 68 percent faster,
-          up to 6.7M IOPS. All this in a 25 percent smaller footprint. Unmatched PROTECTION and SECURITY.
+          processors and provides up 5 times more performance than the competition giving Unmatched Performance, PROTECTION and SECURITY.
           VMAX Nine Fifty supports all the data services you expect from VMAX giving you the protection your enterprise requires.
 
 ndm_definition: Non Disruptive Migration is a unique feature of VMAX ALL FLASH and VMAX3 arrays that enables customers to migrate
