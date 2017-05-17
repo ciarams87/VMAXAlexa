@@ -44,10 +44,10 @@ vmax_intro: VMAX All Flash is architected to support the densest flash configura
 vmax_device_limits: VMAX All FLash and VMAX3 support devices of up to 64TB in size.  VMAX ALL FLASH volumes can be
                     dynamically expanded, and do not use meta devices.  VMAX ALL FLASH supports up to 64K volumes.
 
-vmax_950: VMAX Nine Fifty is the latest additionion to the VMAX family.  Mazel tov. Vmax nine fifty uses the latest intel
+vmax_950: VMAX Nine Fifty is the latest addition to the VMAX family.  Mazzel tov. Vmax nine fifty uses the latest intel
           processors and provides up 5 times more performance than the competition in the real world Compared to the
           previous generation. 30 percent better response times, 350 microseconds for OLTP workloads. 68 percent faster,
-          up to 6.7M IOPS. All this in a 25 percent smaller footprint. UNPARELLED PROTECTION and SECURITY.
+          up to 6.7M IOPS. All this in a 25 percent smaller footprint. Unmatched PROTECTION and SECURITY.
           VMAX Nine Fifty supports all the data services you expect from VMAX giving you the protection your enterprise requires.
 
 ndm_definition: Non Disruptive Migration is a unique feature of VMAX ALL FLASH and VMAX3 arrays that enables customers to migrate
@@ -56,38 +56,26 @@ ndm_definition: Non Disruptive Migration is a unique feature of VMAX ALL FLASH a
                 in VMAX to VMAX All Flash migrations a uniquely seamless activity.
 
 snapvx_definition: SnapVX is the latest and greatest Local replication available on VMAX3 and VMAX ALL FLASH.  SnapVX is
-                   as efficient as possible by creating a snapshot, a pointer based structure that preserves a
-                   Point-in-time view of a source volume. Snapshots do not require target volumes. They share back-end allocations
-                   with the source volume and other snapshots of the source volume.  And only consume additional space when
-                   the source volume is changed. A single source volume can have up to 256 snapshots.
+                   incredibly space efficient with minimal performance overhead.
 
 snap_resources: Simply creating a targetless snapshot does not consume any system resources.
                 The snapshot storage usage grows as the source device is updated as we are preserving the original data.
-                Cache and flash resources are also required to store and manage snapshot data
-                and metadata, such as source device, snapshot, timestamp, and so on.
+
 
 defined_meaning: When a target is linked, the defining process scans the entire target device. The
                  defining scan changes the pointers of each track on the target to share the
                  appropriate backend data for the point-in-time snapshot, which will typically be a
                  combination of source tracks and snapshot changes.
-                 The defining process and shared allocations allow the target to access the
-                 backend data directly and without redirection. This capability allows SnapVX to
-                 offer unlimited levels of cascading, improved performance of accessing linked
-                 targets compared to traditional snapshots and nocopy clones, and access to pointin-time
-                 data by nocopy targets after they are unlinked.
 
-
-unmount_link: Yes. The target will be toggled to the not ready state and then back to the ready
-              state during the link and relink operations and will become momentarily
-              unavailable. So the target should be unmounted before issuing either the link or
+unmount_link: Yes. The target should be unmounted before issuing either the link or
               relink command and then remounted after the operation completes. This action
               also ensures that the host operating system does not cache any file system data.
               Generally speaking you should unmount any volumes before refreshing the data from the storage
               array so that the host inode tables are refreshed too.
 
 rescan_volumes: There is no EMC TimeFinder requirement to rescan after a link or unlink operation.
-                Typically, the rescan requirement is dependent on the specific host operating
-                system or if devices were added to the set, for example, the Storage Group.
+                A rescan is only required when prestenting volumes to a host for the first time or if
+                new volumes were added to the Storage Group.
 
 compliance_details: There are {{ all_sg_count }} storage groups. {{ stable_sg_count }} are stable.
                     {{ marginal_sg_count }} are marginal and {{ critical_sg_count }} are critical.
