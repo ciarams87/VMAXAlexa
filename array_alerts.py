@@ -110,15 +110,18 @@ def list_processing_jobs():
     jobs_processing_list = []
 
     for job in job_ids:
-        jobs_processing_list.append(vmax.get_processing_job(array, job))
+        tasks, status = vmax.get_processing_job(array, job)
+        if tasks:
+            for task in tasks:
+                task_descriptions.append(task['description'])
+        job_task_status_tuple = (job, task_descriptions, status)
+        jobs_processing_list.append(job_task_status_tuple)
 
-    if jobs_processing_list and len(jobs_processing_list) > 0:
-        for taskDesc in jobs_processing_list:
-            task_descriptions.append(taskDesc['description'])
-
-    if task_descriptions:
-        msg = render_template('processing_jobs_details', jobs_processing_count=len(jobs_processing_list),
-                              processing_jobs_list=task_descriptions)
+    if jobs_processing_list:
+        msg = render_template('processing_jobs_details',
+                              jobs_processing_count=len(jobs_processing_list),
+                              processing_jobs_list=jobs_processing_list[0][1],
+                              status=jobs_processing_list[0][2])
     else:
         msg = render_template('no_jobs')
     return question(msg)

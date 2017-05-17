@@ -83,12 +83,13 @@ compliance_details: There are {{ all_sg_count }} storage groups. {{ stable_sg_co
 found_array: Selected VMAX array {{ symm_id }}
 
 
-total_usable_capacity: Your Array is currenty  {{ effective_used_capacity_percent }} percent of effective capacity consumed.
+total_usable_capacity: Your Array is currently  {{ effective_used_capacity_percent }} percent of effective capacity consumed.
 
 
 no_array: VMAX array {{ symm_id }} not found
 
-processing_jobs_details: There are {{ jobs_processing_count }} pending jobs for this session. They are {{ processing_jobs_list }}
+processing_jobs_details: There is {{ jobs_processing_count }} pending job for this session. It's description is
+                          {{ processing_jobs_list }} and its status is {{ status }}.
 
 no_jobs: There no pending jobs for this session
 
@@ -98,7 +99,6 @@ host_list: There are {{ host_count }} hosts in your environment. These are {{ ho
 no_hosts: There are no hosts configured in your environment
 
 provision_storage: Provisioning a {{ size }} gigabyte volume to {{ host }}.
-                   If you would like to query the status of the job, say "get job status".
 
 destroy_array: Initiating self-destruct sequence, A-K-A the mother of all D-U D-L events, in five, four,
                three, two, one. Just kidding. You can't do that with VMAX.

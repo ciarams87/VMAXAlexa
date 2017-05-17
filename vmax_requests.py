@@ -88,7 +88,7 @@ def get_all_sg_compliance(array, filters=None):
 def get_processing_job(array, jobId, filters=None):
     target_uri = "/84/system/symmetrix/%(array)s/job/%(jobId)s" % {'array': array, 'jobId': jobId}
     response, status_code = vmax_req.rest_request(target_uri, 'get', filters)
-    return response['task']
+    return response['task'], response['status']
 
 
 def get_alert(array, alert_id):
