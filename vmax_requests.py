@@ -25,7 +25,7 @@ def check_status_code_success(status_code, response):
     :param response: the server response
     """
     if status_code not in [200, 201, 202, 204]:
-        LOG.error('Error making rest call.')
+        print('Error making rest call.')
         raise Exception
 
 
