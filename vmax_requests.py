@@ -342,6 +342,21 @@ def provision_storage_to_host(array, host, size):
             array, volume_name, sg_name, str(size))
     return job_id
 
+def get_perf_keys(array_id):
+    """Get array metrics.
+    Get all avaliable performance statistics for specified time 
+    period return in JSON
+    :param start_date: EPOCH Time
+    :param end_date: Epoch Time
+    :return: array_results_combined
+    """
+
+    target_uri = "/performance/Array/keys"
+
+    array_key_data = vmax_req.rest_request(
+        target_uri, GET)
+    return array_key_data[0]['arrayInfo'][0]['lastAvailableDate']
+
 def get_array_metrics(array_id):
     """Get array metrics.
     Get all avaliable performance statistics for specified time 
@@ -350,8 +365,8 @@ def get_array_metrics(array_id):
     :param end_date: Epoch Time
     :return: array_results_combined
     """
-    start_date= 1495023300000
-    end_date=1495023300000
+    start_date= get_perf_keys(array_id)
+    end_date=start_date
     target_uri = "/performance/Array/metrics"
     array_perf_payload = {
         'symmetrixId': array_id,
