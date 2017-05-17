@@ -35,11 +35,14 @@ def vmax_intro():
 def list_arrays():
     arrays = vmax.get_array_list()
     len_array_list = len(arrays)
-    arrays_msg = render_template('array', amount=len_array_list,
-                                 array_list=list(enumerate(arrays)))
-    session.attributes['arrays'] = arrays
     if len_array_list == 1:
         session.attributes['array'] = arrays[0]
+        arrays_msg = render_template('one_array', amount=len_array_list,
+                                     array=arrays[0])
+    else:
+        arrays_msg = render_template('array', amount=len_array_list,
+                                     array_list=list(enumerate(arrays)))
+    session.attributes['arrays'] = arrays
     return question(arrays_msg)
 
 
@@ -98,20 +101,25 @@ def list_sg_compliance():
 
 @ask.intent("ListProcessingJob")
 def list_processing_jobs():
+    job_ids = []
+    task_descriptions = []
     array = session.attributes['array']
-    job_ids = session.attributes['job_ids']
+    if session.attributes.get('job_ids'):
+        job_ids = session.attributes['job_ids']
     jobs_processing_list = []
 
     for job in job_ids:
         jobs_processing_list.append(vmax.get_processing_job(array, job))
 
     if jobs_processing_list and len(jobs_processing_list) > 0:
-        task_descriptions = []
         for taskDesc in jobs_processing_list:
             task_descriptions.append(taskDesc['description'])
 
-    msg = render_template('processing_jobs_details',jobs_processing_count=len(jobs_processing_list),
-                          processing_jobs_list=task_descriptions)
+    if task_descriptions:
+        msg = render_template('processing_jobs_details', jobs_processing_count=len(jobs_processing_list),
+                              processing_jobs_list=task_descriptions)
+    else:
+        msg = render_template('no_jobs')
     return question(msg)
 
 
