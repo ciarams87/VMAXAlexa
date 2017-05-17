@@ -120,8 +120,8 @@ def list_processing_jobs():
     if jobs_processing_list:
         msg = render_template('processing_jobs_details',
                               jobs_processing_count=len(jobs_processing_list),
-                              processing_jobs_list=jobs_processing_list[0][1],
-                              status=jobs_processing_list[0][2])
+                              processing_jobs_list=str(jobs_processing_list[0][1]),
+                              status=str(jobs_processing_list[0][2]))
     else:
         msg = render_template('no_jobs')
     return question(msg)

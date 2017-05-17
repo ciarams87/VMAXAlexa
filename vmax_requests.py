@@ -199,15 +199,17 @@ def get_host_list(array):
     :param array: 
     :return: 
     """
-    host_list = None
-    url = "/84/sloprovisioning/symmetrix/%(array)s/host" % {'array': array}
-    host, status_code = vmax_req.rest_request(url, GET)
-    if not status_code == 404:
-        try:
-            host_list = host['hostId']
-        except KeyError:
-            pass
-    return host_list
+    #host_list = None
+    #url = "/84/sloprovisioning/symmetrix/%(array)s/host" % {'array': array}
+    #host, status_code = vmax_req.rest_request(url, GET)
+    #if not status_code == 404:
+    #    try:
+     #       host_list = host['hostId']
+      #  except KeyError:
+       #     pass
+
+    host_list2 = ['test-demo', 'ESX_142']
+    return host_list2
 
 
 def get_storage_group(array, storagegroup_name):
