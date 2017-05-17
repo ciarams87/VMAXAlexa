@@ -17,12 +17,15 @@
   "slots": [
         {
           "name": "id",
-          "type": "AMAZON.FOUR_DIGIT_NUMBER"
+          "type": "AMAZON.NUMBER"
         }
       ]
     },
     {
       "intent": "ListAlertsIntent"
+    },
+    {
+      "intent": "DestroyArray"
     },
     {
       "intent": "GoodbyeIntent"

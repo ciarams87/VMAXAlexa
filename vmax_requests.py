@@ -203,7 +203,7 @@ def get_host_list(array):
     """
     host_list = None
     url = "/84/sloprovisioning/symmetrix/%(array)s/host" % {'array': array}
-    status_code, host = vmax_req.rest_request(url, GET)
+    host, status_code = vmax_req.rest_request(url, GET)
     if not status_code == 404:
         try:
             host_list = host['hostId']
@@ -238,7 +238,7 @@ def get_host_masking_view(array, host):
     sg_name = None
     url = ("/84/sloprovisioning/symmetrix/%(array)s/host/%(host)s"
            % {'array': array, 'host': host})
-    status_code, host_details = vmax_req.rest_request(url, GET)
+    host_details, status_code = vmax_req.rest_request(url, GET)
     check_status_code_success(status_code, host_details)
     try:
         mv_list = host_details['maskingview']
@@ -302,7 +302,7 @@ def create_storage_group(array, sg_name):
                "storageGroupId": sg_name,
                "emulation": "FBA",
                "create_empty_storage_group": "true"}
-    status_code, job = vmax_req.rest_request(
+    job, status_code = vmax_req.rest_request(
         url, POST, request_object=payload)
     check_status_code_success(status_code, job)
 

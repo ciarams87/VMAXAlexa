@@ -24,13 +24,11 @@ array: There are {{ amount }} VMAX arrays in your environment. These are {{ arra
 indexerror: Sorry, that index was not recognised. Would you like to try again?
 
 alerts: There are {{ array_alert_num }} total unacknowledged alerts, including {{ server_unacknowledged }}
-        server alerts, for the given VMAX. If you would like the details of these alerts, say alerts.
-        If not, say no or goodbye. What is your choice?
+        server alerts, for the given VMAX. If you would like the details of these alerts, say "get alert details".
 
-no_alerts: There are no alerts for your chosen array. Would you like to choose another array?
+no_alerts: There are no alerts for your chosen array.
 
 alert_details: The details of the selected alerts are as follows {{ alert_list }}.
-               Would you like to choose another array?
 
 goodbye: Goodbye and thank you.
 
@@ -87,9 +85,9 @@ rescan_volumes: There is no EMC TimeFinder requirement to rescan after a link or
                 Typically, the rescan requirement is dependent on the specific host operating
                 system or if devices were added to the set, for example, the Storage Group.
 
-compliance_details: There are {{ no_sg_count }} storage groups. {{ stable_sg_count }} are stable.
+compliance_details: There are {{ all_sg_count }} storage groups. {{ stable_sg_count }} are stable.
                     {{ marginal_sg_count }} are marginal and {{ critical_sg_count }} are critical.
-
+                    Additionally, {{ no_slo_count }} storage groups have no S-L-O.
 
 found_array: Selected VMAX array {{ symm_id }}
 
@@ -108,3 +106,6 @@ no_hosts: There are no hosts configured in your environment
 
 provision_storage: Provisioning a {{ size }} gigabyte volume to {{ host }}.
                    If you would like to query the status of the job, say "get job status".
+
+destroy_array: Initiating self-destruct sequence, A-K-A the mother of all D-U D-L events, in five, four,
+               three, two, one. Just kidding. You can't do that with VMAX.

@@ -9,7 +9,10 @@ LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 @ask.launch
 def new_game():
-    session.attributes['arrays'] = vmax.get_array_list()
+    arrays = vmax.get_array_list()
+    session.attributes['arrays'] = arrays
+    if len(arrays) == 1:
+        session.attributes['array'] = arrays[0]
     welcome_msg = render_template('welcome')
     return question(welcome_msg)
 
@@ -78,11 +81,18 @@ def array_alerts(id=None):
 def list_sg_compliance():
     array = session.attributes['array']
     sg_compliance_list = vmax.get_all_sg_compliance(array)
+    # print(type(sg_compliance_list))
+    # for v in sg_compliance_list:
+    #     print(v)
+    #     print(int(sg_compliance_list[v]))
+    all_sg_count = sum([int(sg_compliance_list[v]) for v in sg_compliance_list])
+
     if sg_compliance_list and len(sg_compliance_list) > 0:
-        msg = render_template('compliance_details', no_sg_count=sg_compliance_list['no_slo'],
+        msg = render_template('compliance_details', all_sg_count=all_sg_count,
                               stable_sg_count=sg_compliance_list['slo_stable'],
                               marginal_sg_count=sg_compliance_list['slo_marginal'],
-                              critical_sg_count=sg_compliance_list['slo_critical'])
+                              critical_sg_count=sg_compliance_list['slo_critical'],
+                              no_slo_count=sg_compliance_list['no_slo'])
         return question(msg)
 
 
@@ -105,7 +115,7 @@ def list_processing_jobs():
     return question(msg)
 
 
-@ask.intent("ListAlertsIntent")
+@ask.intent("GetAlertDetailsIntent")
 def list_and_acknowledge_alerts():
     return_alerts = []
     array = session.attributes['array']
@@ -207,6 +217,10 @@ def ndm_definition_faq():
 @ask.intent("GoodbyeIntent")
 def goodbye():
     return statement(render_template('goodbye'))
+
+@ask.intent("DestroyArray")
+def destroy_array():
+    return question(render_template('destroy_array'))
 
 if __name__ == '__main__':
     app.run(debug=True)
