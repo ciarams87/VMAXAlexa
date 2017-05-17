@@ -20,8 +20,8 @@ def new_game():
 @ask.intent("SymmCapacityIntent")
 def get_symm_capcity():
     array = session.attributes['array']
-    total_usable_cap_gb = vmax.get_symm_capacity(array)
-    msg = render_template('total_usable_capacity', total_usable_cap_val = total_usable_cap_gb)
+    effective_used_capacity_percent = vmax.get_symm_capacity(array)
+    msg = render_template('effective_used_capacity_percent', total_usable_cap_val = effective_used_capacity_percent)
     return question(msg)
 
 
