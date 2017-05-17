@@ -173,7 +173,21 @@ def snap_rescan_faq():
     snap_rescan_faq_msg = render_template('rescan_volumes')
     return question(snap_rescan_faq_msg)
 
-#TODO create intents and iterations for already in yaml alerts_commands provisioning_commands performance_commands faq_questions
+#TODO create intents and iterations for already in yaml alert_help provisioning_help performance_help faq_help
+@ask.intent("alertshelp")
+def alert_help():
+    alert_help_msg = render_template('alert_help')
+    return question(alert_help_msg)
+
+@ask.intent("provisioninghelp")
+def provisioning_help():
+    provisioning_help_msg = render_template('provisioning_help')
+    return question(provisioning_help_msg)
+
+@ask.intent("faq_help")
+def faq_help():
+    faq_help_msg = render_template('faq_help')
+    return question (faq_help_msg)
 
 @ask.intent("vmaxlimits")
 def vmax_limits_faq():
