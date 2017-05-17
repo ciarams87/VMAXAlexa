@@ -2,15 +2,9 @@ welcome: Welcome to VMAX managed by Alexa. Voice Controled Storage Domination.
 
 what_can_i_do: Ask me about Alerts, Provisioning, Performance, or why not ask about the new VMAX Nine Fifty
 
-alert_help: Possible Questions are.
-             what alerts are on my VMAX.
-             get the alert details.
-             get alert details..
-                 
+alert_help: you can ask, what alerts are on my VMAX.
 
-provisioning_help: You can simply ask me provision storage, or you can ask for details about capacity for example
-                  What is my VMAX capacity.
-                  How is my VMAX capacity.
+provisioning_help: You can simply ask me provision storage.
 
 performance_help: Possible Questions are.
                   Give me an overview of storage group compliance.
@@ -103,5 +97,5 @@ provision_storage: Provisioning a {{ size }} gigabyte volume to {{ host }}.
 destroy_array: Initiating self-destruct sequence, A-K-A the mother of all D-U D-L events, in five, four,
                three, two, one. Just kidding. You can't do that with VMAX.
 
-performance_stats: Your VMAX system is running {{HostIOs}} totaling {{HostMBs}} megabytes per second.  Cash Utilization
+performance_stats: Your VMAX system is running {{HostIOs}} IOs per second totaling {{HostMBs}} megabytes per second.  Cash Utilization
                    is at {{PercentCacheWP}} and your average read response time is {{ReadResponseTime}} milliseconds.
