@@ -140,10 +140,10 @@ def delete_alert(array, alert_id):
 
 
 def get_symm_capacity(array, filters=None):
-    target_uri = "/84/sloprovisioning/symmetrix/%(array)s/" \
+    target_uri = "/84/sloprovisioning/symmetrix/%(array)s/srp/SRP_1" \
                  % {'array': array}
     response, status_code = vmax_req.rest_request(target_uri, 'get', filters)
-    return response['total_usable_cap_gb']
+    return response['effective_used_capacity_percent']
 
 
 def add_new_volume_to_sg(

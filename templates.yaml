@@ -1,4 +1,4 @@
-welcome: Welcome to VMAX managed by Alexa.
+welcome: Welcome to VMAX managed by Alexa. Voice Controled Storage Domination.
 
 what_can_i_do: Ask me about Alerts, Provisioning, Performance, or why not ask about the new VMAX Nine Fifty
 
@@ -8,12 +8,9 @@ alert_help: Possible Questions are.
              get alert details..
                  
 
-provisioning_help: Possible Questions for provisioning are.
-                  you can simply ask provision storage, or you can ask for details about capacity for example
+provisioning_help: You can simply ask me provision storage, or you can ask for details about capacity for example
                   What is my VMAX capacity.
                   How is my VMAX capacity.
-
-
 
 performance_help: Possible Questions are.
                   Give me an overview of storage group compliance.
@@ -86,7 +83,7 @@ compliance_details: There are {{ all_sg_count }} storage groups. {{ stable_sg_co
 found_array: Selected VMAX array {{ symm_id }}
 
 
-total_usable_capacity: There are {{ total_usable_cap_val }} gigabytes available.
+total_usable_capacity: Your Array is currenty  {{ effective_used_capacity_percent }} percent of effective capacity consumed.
 
 
 no_array: VMAX array {{ symm_id }} not found
