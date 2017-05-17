@@ -183,7 +183,6 @@ def snap_rescan_faq():
     snap_rescan_faq_msg = render_template('rescan_volumes')
     return question(snap_rescan_faq_msg)
 
-#TODO create intents and iterations for already in yaml alert_help provisioning_help performance_help faq_help
 @ask.intent("alertshelp")
 def alert_help():
     alert_help_msg = render_template('alert_help')
