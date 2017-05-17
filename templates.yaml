@@ -102,3 +102,6 @@ provision_storage: Provisioning a {{ size }} gigabyte volume to {{ host }}.
 
 destroy_array: Initiating self-destruct sequence, A-K-A the mother of all D-U D-L events, in five, four,
                three, two, one. Just kidding. You can't do that with VMAX.
+
+performance_stats: Your VMAX system is running {{HostIOs}} totaling {{HostMBs}} megabytes per second.  Cash Utilization
+                   is at {{PercentCacheWP}} and your average read response time is {{ReadResponseTime}} milliseconds.

@@ -89,6 +89,8 @@ class RestRequests:
             response = e
         return response, status_code
 
+
+
     def close_session(self):
         """
         Close the current rest session

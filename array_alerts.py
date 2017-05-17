@@ -238,5 +238,14 @@ def goodbye():
 def destroy_array():
     return question(render_template('destroy_array'))
 
+#performance_stats Your VMAX system is running {{HostIOs}} totaling {{HostMBs}} megabytes per second.  Cach Utilization
+                  #is at {{PercentCacheWP}} and your average read response time is {{ReadResponseTime}} milliseconds.
+
+@ask.intent("perfstats")
+def perf_stats():
+    array_id=session.attributes['array']
+    perf_stats = vmax.get_array_metrics(array_id)
+    msg = render_template('performance_stats', HostIOs = round (perf_stats['HostIOs']),HostMBs = round(perf_stats['HostMBs']),PercentCacheWP = round (perf_stats['PercentCacheWP']),ReadResponseTime=perf_stats['ReadResponseTime'])
+    return question (msg)
 if __name__ == '__main__':
     app.run(debug=True)
