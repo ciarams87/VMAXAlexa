@@ -157,6 +157,10 @@ def provision_to_host(host, size):
 def new_session():
     LOG.info('new session started')
 
+@ask.intent("whatcanido")
+def wcid():
+    wcid_msg = render_template('what_can_i_do')
+    return question(wcid_msg)
 
 @ask.intent("snapresourcesIntent")
 def snap_resource_faq():
