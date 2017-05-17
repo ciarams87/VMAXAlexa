@@ -3,14 +3,16 @@ welcome: Welcome to VMAX managed by Alexa.
 what_can_i_do: Ask me about Alerts, Provisioning, Performance, or why not ask about the new VMAX Nine Fifty
 
 alert_help: Possible Questions are.
-             what alerts are on my, array.
+             what alerts are on my VMAX.
              get the alert details.
              get alert details..
                  
 
 provisioning_help: Possible Questions for provisioning are.
+                  you can simply ask provision storage, or you can ask for details about capacity for example
                   What is my VMAX capacity.
                   How is my VMAX capacity.
+
 
 
 performance_help: Possible Questions are.
