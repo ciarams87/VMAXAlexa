@@ -153,8 +153,9 @@ def return_host_list():
 
 
 @ask.intent("ChooseHostIntent", convert={'size': int})
-def provision_to_host(host, size):
+def provision_to_host(size):
     array = session.attributes['array']
+    host = 'test-demo'
     job_id = vmax.provision_storage_to_host(array, host, size)
     session.attributes['job_ids'].append(job_id)
     msg = render_template('provision_storage', host=host, size=size)
