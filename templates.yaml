@@ -8,8 +8,7 @@ alert_help: Possible Questions are.
              get alert details..
                  
 
-provisioning_help: Possible Questions for provisioning are.
-                  you can simply ask provision storage, or you can ask for details about capacity for example
+provisioning_help: You can simply ask me provision storage, or you can ask for details about capacity for example
                   What is my VMAX capacity.
                   How is my VMAX capacity.
 
