@@ -23,6 +23,8 @@ faq_help: You can ask for help on the following topics.
 array: There are {{ amount }} VMAX arrays in your environment. These are {{ array_list }}.
        Select an array by stating the last four digits of its serial number.
 
+one_array: There is one array in your environment. Its serial number is {{ array }}
+
 indexerror: Sorry, that index was not recognised. Would you like to try again?
 
 alerts: There are {{ array_alert_num }} total unacknowledged alerts, including {{ server_unacknowledged }}
@@ -99,7 +101,9 @@ total_usable_capacity: There are {{ total_usable_cap_val }} gigabytes available.
 
 no_array: VMAX array {{ symm_id }} not found
 
-processing_jobs_details: There are {{ jobs_processing_count }}. They are {{ processing_jobs_list }}
+processing_jobs_details: There are {{ jobs_processing_count }} pending jobs for this session. They are {{ processing_jobs_list }}
+
+no_jobs: There no pending jobs for this session
 
 host_list: There are {{ host_count }} hosts in your environment. These are {{ host_list }}.
            Which host would you like to provision storage to? Please state the name of the host and the capacity required.
