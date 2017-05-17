@@ -240,9 +240,9 @@ def destroy_array():
 
 @ask.intent("perfstats")
 def perf_stats():
+    array_id=session.attributes['array']
     perf_stats = vmax.get_array_metrics(array_id)
-    msg = render_template('perf_stats', HostIOs = perf_stats[0]['HostIOs'],HostMBs = perf_stats[0]['HostMBs'],PercentCacheWP = perf_stats[0][PercentCacheWP],perf_stats[0][ReadResponseTime])
+    msg = render_template('performance_stats', HostIOs = round (perf_stats['HostIOs']),HostMBs = round(perf_stats['HostMBs']),PercentCacheWP = round (perf_stats['PercentCacheWP']),ReadResponseTime=perf_stats['ReadResponseTime'])
     return question (msg)
-
 if __name__ == '__main__':
     app.run(debug=True)
