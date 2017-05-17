@@ -2,15 +2,9 @@ welcome: Welcome to VMAX managed by Alexa. Voice Controled Storage Domination.
 
 what_can_i_do: Ask me about Alerts, Provisioning, Performance, or why not ask about the new VMAX Nine Fifty
 
-alert_help: Possible Questions are.
-             what alerts are on my VMAX.
-             get the alert details.
-             get alert details..
-                 
+alert_help: you can ask, what alerts are on my VMAX.
 
-provisioning_help: You can simply ask me provision storage, or you can ask for details about capacity for example
-                  What is my VMAX capacity.
-                  How is my VMAX capacity.
+provisioning_help: You can simply ask me provision storage.
 
 performance_help: Possible Questions are.
                   Give me an overview of storage group compliance.
