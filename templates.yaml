@@ -1,20 +1,22 @@
 welcome: Welcome to VMAX managed by Alexa. Ask about Alerts, Provisioning, Performance.
 
-alerts_commands: Possible Questions are.
-                 List active alerts.
-                 Acknolodge Alert Alert ID
+alerts_help: Possible Questions are.
+             What arrays are available.
+             What VMAXs are available.
+             what arrays are in my environment.
                  
 
-provisioning_commands: Possible Questions are.
-                       Provision X GB of strorage to Host hostname.
+provisioning_help: Possible Questions for provisioning are.
+                  What is my VMAX capacity.
+                  How is my VMAX capacity.
 
-performance_commands: Possible Questions are.
-                      Give me an overview of storage group compliance.
 
-faq_questions: You can ask for help on the following topics.
-               SnapVX.
-               VMAX Nine Fifty.
-               NDM, Non Disruptive Migration.
+performance_help: Possible Questions are.
+                  Give me an overview of storage group compliance.
+
+faq_help: You can ask for help on the following topics.
+          Tell me about VMAX all flash.
+          Tell me about the new VMAX
 
 array: There are {{ amount }} VMAX arrays in your environment. These are {{ array_list }}.
        Select an array by stating the last four digits of its serial number.
@@ -40,9 +42,10 @@ vmax_intro: VMAX All Flash is architected to support the densest flash configura
 vmax_device_limits: VMAX All FLash and VMAX3 support devices of up to 64TB in size.  VMAX ALL FLASH volumes can be
                     dynamically expanded, and do not use meta devices.  VMAX ALL FLASH supports up to 64K volumes.
 
-vmax_950: VMAX Nine Fifty resets the benchmark for enterprise storage performance giving results up to 5 times faster than the competition in the real world
-          Compared to the previous generation. 30 percent better response times, 350 microseconds for OLTP workloads. 68 percent faster, up to 6.7M IOPS.
-          25 percent smaller footprint tachieve the same performance and capacity. UNPARELLED PROTECTION and SECURITY.
+vmax_950: VMAX Nine Fifty is the latest additionion to the VMAX family.  Mazel tov. Vmax nine fifty uses the latest intel
+          processors and provides up 5 times more performance than the competition in the real world Compared to the
+          previous generation. 30 percent better response times, 350 microseconds for OLTP workloads. 68 percent faster,
+          up to 6.7M IOPS. All this in a 25 percent smaller footprint. UNPARELLED PROTECTION and SECURITY.
           VMAX Nine Fifty supports all the data services you expect from VMAX giving you the protection your enterprise requires.
 
 ndm_definition: Non Disruptive Migration is a unique feature of VMAX ALL FLASH and VMAX3 arrays that enables customers to migrate
