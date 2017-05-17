@@ -111,10 +111,7 @@ def list_processing_jobs():
 
     for job in job_ids:
         tasks, status = vmax.get_processing_job(array, job)
-        if tasks:
-            for task in tasks:
-                task_descriptions.append(task['description'])
-        job_task_status_tuple = (job, task_descriptions, status)
+        job_task_status_tuple = (job, tasks[0], status)
         jobs_processing_list.append(job_task_status_tuple)
 
     if jobs_processing_list:
