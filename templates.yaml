@@ -83,7 +83,7 @@ compliance_details: There are {{ all_sg_count }} storage groups. {{ stable_sg_co
 found_array: Selected VMAX array {{ symm_id }}
 
 
-total_usable_capacity: Your Array is currenty  {{ total_usable_cap_val }} percent of effective capacity consumed.
+total_usable_capacity: Your Array is currenty  {{ effective_used_capacity_percent }} percent of effective capacity consumed.
 
 
 no_array: VMAX array {{ symm_id }} not found
