@@ -11,6 +11,7 @@ LOG = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 def new_game():
     arrays = vmax.get_array_list()
     session.attributes['arrays'] = arrays
+    session.attributes['job_ids'] = []
     if len(arrays) == 1:
         session.attributes['array'] = arrays[0]
     welcome_msg = render_template('welcome')
