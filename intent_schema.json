@@ -1,34 +1,449 @@
 {
   "intents": [
-  {
-  "intent": "YesIntent"
-  },
-  {
-  "intent": "ChooseArrayIntent",
-  "slots": [
+    {
+      "name": "alertshelp",
+      "samples": [
+        "what can I do with alerts"
+      ],
+      "slots": []
+    },
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "ChooseHostIntent",
+      "samples": [
+        "provision {size} gigabyte volume to test-demo"
+      ],
+      "slots": [
         {
-          "name": "index",
-          "type": "AMAZON.NUMBER"
+          "name": "size",
+          "type": "AMAZON.NUMBER",
+          "samples": []
         }
       ]
     },
-  {
-  "intent": "SelectArrayIntent",
-  "slots": [
+    {
+      "name": "DestroyArray",
+      "samples": [
+        "I no longer need my array"
+      ],
+      "slots": []
+    },
+    {
+      "name": "GetAlertDetailsIntent",
+      "samples": [
+        "get alert details",
+        "get the alert details"
+      ],
+      "slots": []
+    },
+    {
+      "name": "GoodbyeIntent",
+      "samples": [
+        "goodbye",
+        "bye",
+        "no"
+      ],
+      "slots": []
+    },
+    {
+      "name": "ListAlertsIntent",
+      "samples": [
+        "What alerts are on my array",
+        "What alerts are on array {id}",
+        "List alerts",
+        "are there any alerts on my array ",
+        "have I any alerts on my VMAX"
+      ],
+      "slots": [
         {
           "name": "id",
-          "type": "AMAZON.NUMBER"
+          "type": "AMAZON.FOUR_DIGIT_NUMBER",
+          "samples": []
         }
       ]
     },
     {
-      "intent": "ListAlertsIntent"
+      "name": "ListArraysIntent",
+      "samples": [
+        "List arrays",
+        "What arrays are in my environment",
+        "What VMAXs are available",
+        "What arrays are available",
+        "List my arrays"
+      ],
+      "slots": []
     },
     {
-      "intent": "DestroyArray"
+      "name": "ListProcessingJob",
+      "samples": [
+        "How is that job",
+        "How are my jobs",
+        "Is there any processing jobs",
+        "how are my jobs doing"
+      ],
+      "slots": []
     },
     {
-      "intent": "GoodbyeIntent"
+      "name": "ListSGComplianceIntent",
+      "samples": [
+        "How are my storage groups doing",
+        "Hows my storage groups doing"
+      ],
+      "slots": []
+    },
+    {
+      "name": "ndmdefinition",
+      "samples": [
+        "Tell me about NDM",
+        "What is NDM",
+        "Tell me about VMAX Non Disruptive Migration"
+      ],
+      "slots": []
+    },
+    {
+      "name": "perfstats",
+      "samples": [
+        "hows my array performing",
+        "How's my performance looking"
+      ],
+      "slots": []
+    },
+    {
+      "name": "provisioninghelp",
+      "samples": [
+        "how do I provision storage"
+      ],
+      "slots": []
+    },
+    {
+      "name": "ProvisionStorageIntent",
+      "samples": [
+        "Provision storage",
+        "Provision a new volume to a host",
+        "Add volume to masking view"
+      ],
+      "slots": []
+    },
+    {
+      "name": "SelectArrayIntent",
+      "samples": [
+        "Select array {id}"
+      ],
+      "slots": [
+        {
+          "name": "id",
+          "type": "AMAZON.FOUR_DIGIT_NUMBER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "snapdefinedIntent",
+      "samples": [
+        "what does defined mean on VMAX snap"
+      ],
+      "slots": []
+    },
+    {
+      "name": "snapdefinitionIntent",
+      "samples": [
+        "tell me about snapvx",
+        "what is snapvx"
+      ],
+      "slots": []
+    },
+    {
+      "name": "snapresourcesIntent",
+      "samples": [
+        "Does a targetless snapshot consume any resources",
+        "Do SnapVX Snapshots consume Cache "
+      ],
+      "slots": []
+    },
+    {
+      "name": "snapunmountIntent",
+      "samples": [
+        "do I need to unmount volumes",
+        "when do I need to unmount host volumes",
+        "what action is needed at the host side to refresh a snapshot"
+      ],
+      "slots": []
+    },
+    {
+      "name": "SymmCapacityIntent",
+      "samples": [
+        "How is my VMAX capacity",
+        "What is my VMAX capacity",
+        "what's my capacity look like right now"
+      ],
+      "slots": []
+    },
+    {
+      "name": "VmaxIntroIntent",
+      "samples": [
+        "Tell me about VMAX All Flash",
+        "What is VMAX"
+      ],
+      "slots": []
+    },
+    {
+      "name": "vmaxlimits",
+      "samples": [
+        "how big can a volume be on VMAX ",
+        "what are the limits on VMAX All Flash"
+      ],
+      "slots": []
+    },
+    {
+      "name": "vmaxninefifty",
+      "samples": [
+        "Tell me about the new VMAX",
+        "What is the VMAX Nine Fifty"
+      ],
+      "slots": []
+    },
+    {
+      "name": "whatcanido",
+      "samples": [
+        "What functions can you perform on my VMAX"
+      ],
+      "slots": []
     }
-  ]
+  ],
+  "types": [
+    {
+      "name": "vmaxHostName",
+      "values": [
+        {
+          "name": {
+            "value": "test-demo"
+          }
+        },
+        {
+          "name": {
+            "value": "oracle-DB"
+          }
+        }
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Confirm.Intent-ChooseHostIntent",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "A {size} volume will be provisioned to test-demo"
+        }
+      ]
+    },
+    {
+      "id": "Confirm.Intent-DestroyArray",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Alright. Initiating self-destruct sequence, A-K-A the mother of all D-U-D-L events, in five, four, three, two, one. Just kidding. You can't do that."
+        }
+      ]
+    },
+    {
+      "id": "Confirm.Intent-SelectArrayIntent",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Array {id} has been selected"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "alertshelp",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "ChooseHostIntent",
+        "confirmationRequired": true,
+        "prompts": {
+          "confirm": "Confirm.Intent-ChooseHostIntent"
+        },
+        "slots": [
+          {
+            "name": "size",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "DestroyArray",
+        "confirmationRequired": true,
+        "prompts": {
+          "confirm": "Confirm.Intent-DestroyArray"
+        },
+        "slots": []
+      },
+      {
+        "name": "GetAlertDetailsIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "GoodbyeIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "ListAlertsIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "id",
+            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "ListArraysIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "ListProcessingJob",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "ListSGComplianceIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "ndmdefinition",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "perfstats",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "provisioninghelp",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "ProvisionStorageIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "SelectArrayIntent",
+        "confirmationRequired": true,
+        "prompts": {
+          "confirm": "Confirm.Intent-SelectArrayIntent"
+        },
+        "slots": [
+          {
+            "name": "id",
+            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "snapdefinedIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "snapdefinitionIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "snapresourcesIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "snapunmountIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "SymmCapacityIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "VmaxIntroIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "vmaxlimits",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "vmaxninefifty",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      },
+      {
+        "name": "whatcanido",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": []
+      }
+    ]
+  }
 }
